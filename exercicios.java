@@ -11,6 +11,7 @@ public class exercicios {
         System.out.println("Digite 4 para ver o programa de somar dois numeros:");
         System.out.println("Digite 5 para ver o programa de calcular a media:");
         System.out.println("Digite 6 para ver o programa de converter reais em dolares:");
+        System.out.println("Digite 7 para ver o programa de cartao de crédito:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -32,6 +33,9 @@ public class exercicios {
                 break;
             case 6:
                 conversorRealToDolar();
+                break;
+            case 7:
+                cartaoCredito();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -151,11 +155,26 @@ public class exercicios {
 
     public static void conversorRealToDolar() {
         Scanner leia = new Scanner(System.in);
-        float real,cotacao;
+        float real, cotacao;
         System.out.println("Informe o valor em reais: ");
-        real=leia.nextFloat();
+        real = leia.nextFloat();
         System.out.println("Informe a cotação do dolar: ");
-        cotacao=leia.nextFloat();
-        System.out.println("O valor em dolares é: "+Math.round(real/cotacao));
+        cotacao = leia.nextFloat();
+        System.out.println("O valor em dolares é: " + Math.round(real / cotacao));
+    }
+
+    public static void cartaoCredito() {
+        Scanner leia = new Scanner(System.in);
+        int tempo;
+        double total, prestacao,taxa, juros;
+        System.out.println("Informe o valor da prestação: ");
+        prestacao = leia.nextFloat();
+        System.out.println("Informe quantos dias a prestação está vencida: ");
+        tempo = leia.nextInt();
+        taxa = 0.02;
+        total = prestacao + (prestacao * taxa * tempo);
+        juros = total - prestacao;
+        System.out.println("Total de taxa de juros: " + juros);
+        System.out.println("Total da prestação: " + total);
     }
 }
