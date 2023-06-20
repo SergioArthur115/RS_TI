@@ -10,6 +10,7 @@ public class exercicios {
         System.out.println("Digite 3 para ver o programa de dados pessoais completos:");
         System.out.println("Digite 4 para ver o programa de somar dois numeros:");
         System.out.println("Digite 5 para ver o programa de calcular a media:");
+        System.out.println("Digite 6 para ver o programa de converter reais em dolares:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -28,6 +29,9 @@ public class exercicios {
                 break;
             case 5:
                 mediaAluno();
+                break;
+            case 6:
+                conversorRealToDolar();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -127,7 +131,7 @@ public class exercicios {
 
     public static void mediaAluno() {
         Scanner leia = new Scanner(System.in);
-        float notas[] = {0,0,0,0,0}, media = 0;
+        float notas[] = { 0, 0, 0, 0, 0 }, media = 0;
         String nomeAluno;
 
         System.out.println("Informe o nome do aluno: ");
@@ -142,6 +146,16 @@ public class exercicios {
         for (int i = 0; i < 5; i++) {
             System.out.println(notas[i]);
         }
-        System.out.println("Sua media foi de :"+media);
+        System.out.println("Sua media foi de :" + media);
+    }
+
+    public static void conversorRealToDolar() {
+        Scanner leia = new Scanner(System.in);
+        float real,cotacao;
+        System.out.println("Informe o valor em reais: ");
+        real=leia.nextFloat();
+        System.out.println("Informe a cotação do dolar: ");
+        cotacao=leia.nextFloat();
+        System.out.println("O valor em dolares é: "+Math.round(real/cotacao));
     }
 }
