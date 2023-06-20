@@ -1,13 +1,14 @@
 import java.util.Scanner;
 
 public class exercicios {
-    public static void main(final String[] args){
+    public static void main(final String[] args) {
         Scanner leia = new Scanner(System.in);
         int op = 99;
         System.out.println("|Menu|");
         System.out.println("Digite 1 para ver o primeiro programa:");
         System.out.println("Digite 2 para ver o programa de dados pessoais:");
         System.out.println("Digite 3 para ver o programa de dados pessoais completos:");
+        System.out.println("Digite 4 para ver o programa de somar dois numeros:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -21,6 +22,9 @@ public class exercicios {
             case 3:
                 dadosPessoaisCompletos();
                 break;
+            case 4:
+                somaNum();
+                break;
             case 0:
                 System.out.println("Fim do Programa!");
                 break;
@@ -29,6 +33,7 @@ public class exercicios {
                 break;
         }
     }
+
     public static void primeiroPrograma() {
         // primeiro programa em java
         // Disciplina : [Linguagem e Lógica de Programação]
@@ -102,5 +107,17 @@ public class exercicios {
         System.out.println("Seu rg é: " + rg);
         System.out.println("Seu endereco é: " + endereco);
         System.out.println("Sua cidade é: " + cidade);
+    }
+
+    public static void somaNum() {
+        //Programa para somar dois numeros inteiros
+        Scanner leia = new Scanner(System.in);
+        int num1, num2, soma;
+        System.out.println("Informe o primeiro número: ");
+        num1 = leia.nextInt();
+        System.out.println("Informe o segundo número: ");
+        num2 = leia.nextInt();
+        soma = num1 + num2;
+        System.out.println("A soma dos numeros solicitados é: " + soma);
     }
 }
