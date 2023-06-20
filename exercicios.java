@@ -9,6 +9,7 @@ public class exercicios {
         System.out.println("Digite 2 para ver o programa de dados pessoais:");
         System.out.println("Digite 3 para ver o programa de dados pessoais completos:");
         System.out.println("Digite 4 para ver o programa de somar dois numeros:");
+        System.out.println("Digite 5 para ver o programa de calcular a media:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -24,6 +25,9 @@ public class exercicios {
                 break;
             case 4:
                 somaNum();
+                break;
+            case 5:
+                mediaAluno();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -110,7 +114,7 @@ public class exercicios {
     }
 
     public static void somaNum() {
-        //Programa para somar dois numeros inteiros
+        // Programa para somar dois numeros inteiros
         Scanner leia = new Scanner(System.in);
         int num1, num2, soma;
         System.out.println("Informe o primeiro número: ");
@@ -119,5 +123,25 @@ public class exercicios {
         num2 = leia.nextInt();
         soma = num1 + num2;
         System.out.println("A soma dos numeros solicitados é: " + soma);
+    }
+
+    public static void mediaAluno() {
+        Scanner leia = new Scanner(System.in);
+        float notas[] = {0,0,0,0,0}, media = 0;
+        String nomeAluno;
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.nextLine();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas[i] = leia.nextInt();
+            media += notas[i];
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(notas[i]);
+        }
+        System.out.println("Sua media foi de :"+media);
     }
 }
