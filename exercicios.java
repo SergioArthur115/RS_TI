@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class exercicios {
     private static Scanner leia = new Scanner(System.in);
-    public static void main(final String[] args) {  
+
+    public static void main(final String[] args) {
         int op = 99;
-        System.out.println("|Menu|");
+        System.out.println("|Sistema de sistemas de serviços faz tudo|");
         System.out.println("Digite 1 para ver o primeiro programa:");
         System.out.println("Digite 2 para ver o programa de dados pessoais:");
         System.out.println("Digite 3 para ver o programa de dados pessoais completos:");
@@ -13,6 +14,9 @@ public class exercicios {
         System.out.println("Digite 5 para ver o programa de calcular a media:");
         System.out.println("Digite 6 para ver o programa de converter reais em dolares:");
         System.out.println("Digite 7 para ver o programa de cartao de crédito:");
+        System.out.println("Digite 8 para ver o programa de cartao de crédito com taxa ajustavel:");
+        System.out.println("Digite 9 para ver o programa de venda de carros:");
+        System.out.println("Digite 10 para ver o programa de calcular a media com o status de aprovado ou reprovado:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -37,6 +41,15 @@ public class exercicios {
                 break;
             case 7:
                 cartaoCredito();
+                break;
+            case 8:
+                cartaoCredito2();
+                break;
+            case 9:
+                vendaCarro();
+                break;
+            case 10:
+                mediaAlunoAvaliado();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -77,9 +90,9 @@ public class exercicios {
         int idade;
         System.out.println("|Sistema de cadastro básico|");
         System.out.println("Informe seu nome: ");
-        nome = leia.nextLine();
+        nome = leia.next();
         System.out.println("Informe seu sobrenome: ");
-        sobrenome = leia.nextLine();
+        sobrenome = leia.next();
         System.out.println("Informe sua idade: ");
         idade = leia.nextInt();
         System.out.println("-----------------------------");
@@ -94,19 +107,19 @@ public class exercicios {
         int idade;
         System.out.println("|Sistema de cadastro básico|");
         System.out.println("Informe seu nome: ");
-        nome = leia.nextLine();
+        nome = leia.next();
         System.out.println("Informe seu sobrenome: ");
-        sobrenome = leia.nextLine();
+        sobrenome = leia.next();
         System.out.println("Informe seu sexo: ");
-        sexo = leia.nextLine();
+        sexo = leia.next();
         System.out.println("Informe seu cpf: ");
-        cpf = leia.nextLine();
+        cpf = leia.next();
         System.out.println("Informe seu rg: ");
-        rg = leia.nextLine();
+        rg = leia.next();
         System.out.println("Informe seu endereco: ");
-        endereco = leia.nextLine();
+        endereco = leia.next();
         System.out.println("Informe seu cidade: ");
-        cidade = leia.nextLine();
+        cidade = leia.next();
         System.out.println("Informe sua idade: ");
         idade = leia.nextInt();
         System.out.println("-----------------------------");
@@ -132,13 +145,13 @@ public class exercicios {
     }
 
     public static void mediaAluno() {
-        //Programa para calcular a media de um aluno
+        // Programa para calcular a media de um aluno
         float media = 0;
         String nomeAluno;
         ArrayList<Float> notas = new ArrayList<>();
 
         System.out.println("Informe o nome do aluno: ");
-        nomeAluno = leia.nextLine();
+        nomeAluno = leia.next();
         for (int i = 0; i < 5; i++) {
             System.out.println("Informe a " + (i + 1) + "ª nota:");
             notas.add(leia.nextFloat());
@@ -150,7 +163,7 @@ public class exercicios {
     }
 
     public static void conversorRealToDolar() {
-        //Programa para coverter de real para dolar
+        // Programa para coverter de real para dolar
         float real, cotacao;
         System.out.println("Informe o valor em reais: ");
         real = leia.nextFloat();
@@ -160,7 +173,7 @@ public class exercicios {
     }
 
     public static void cartaoCredito() {
-        //Programa para calcular os juros do cartao de credito
+        // Programa para calcular os juros do cartao de credito
         int tempo;
         double total, prestacao, taxa, juros;
         System.out.println("Informe o valor da prestação: ");
@@ -172,5 +185,65 @@ public class exercicios {
         juros = total - prestacao;
         System.out.println("Total de taxa de juros: " + juros);
         System.out.println("Total da prestação: " + total);
+    }
+
+    public static void cartaoCredito2() {
+        // Programa para calcular os juros do cartao de credito
+        int tempo;
+        double total, sub, prestacao, taxa, juros;
+        System.out.println("Informe o valor da prestação: ");
+        prestacao = leia.nextFloat();
+        System.out.println("Informe quantos dias a prestação está vencida: ");
+        tempo = leia.nextInt();
+        System.out.println("Informe o valor da taxa de juros mensal: ");
+        taxa = leia.nextFloat();
+        sub = (taxa / 30) / 100;
+        total = prestacao + (prestacao * sub * tempo);
+        juros = total - prestacao;
+        System.out.println("Total de taxa de juros: " + juros);
+        System.out.println("Total da prestação: " + total);
+    }
+
+    public static void vendaCarro() {
+        // Programa para realizar a venda de um carro
+        String nomeAuto;
+        double precoFabrica, porcVendedor, imposto, total;
+
+        System.out.println("Informe o nome do automóvel: ");
+        nomeAuto = leia.next();
+        System.out.println("Informe o preço de fábrica do automóvel: ");
+        precoFabrica = leia.nextDouble();
+        porcVendedor = precoFabrica * 0.45;
+        imposto = precoFabrica * 0.28;
+        total = precoFabrica + porcVendedor + imposto;
+        System.out.println("Para o automóvel: " + nomeAuto);
+        System.out.println("os sub-totais foram: ");
+        System.out.println("\tPorcentagem do revendedor: " + Math.round(porcVendedor));
+        System.out.println("\tImposto: " + Math.round(imposto));
+        System.out.println("Total a pagar: " + Math.round(total));
+    }
+
+    public static void mediaAlunoAvaliado() {
+        // Programa para calcular a media de um aluno e o status de aprovado ou
+        // reprovado
+        float media = 0;
+        String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: " + notas);
+        System.out.println("Sua media foi de :" + media);
+        if (media >= 7) {
+            System.out.println("Voce foi aprovado!!!");
+        } else {
+            System.out.println("Voce foi reprovado!!!");
+        }
     }
 }
