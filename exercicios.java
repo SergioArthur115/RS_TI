@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class exercicios {
-    public static void main(final String[] args) {
-        Scanner leia = new Scanner(System.in);
+    private static Scanner leia = new Scanner(System.in);
+    public static void main(final String[] args) {  
         int op = 99;
         System.out.println("|Menu|");
         System.out.println("Digite 1 para ver o primeiro programa:");
@@ -73,7 +73,6 @@ public class exercicios {
 
     public static void dadosPessoais() {
         // Programa para realizar um cadastro básico
-        Scanner leia = new Scanner(System.in);
         String nome, sobrenome;
         int idade;
         System.out.println("|Sistema de cadastro básico|");
@@ -91,7 +90,6 @@ public class exercicios {
 
     public static void dadosPessoaisCompletos() {
         // Programa para realizar um cadastro básico
-        Scanner leia = new Scanner(System.in);
         String nome, sobrenome, cpf, sexo, rg, endereco, cidade;
         int idade;
         System.out.println("|Sistema de cadastro básico|");
@@ -124,7 +122,6 @@ public class exercicios {
 
     public static void somaNum() {
         // Programa para somar dois numeros inteiros
-        Scanner leia = new Scanner(System.in);
         int num1, num2, soma;
         System.out.println("Informe o primeiro número: ");
         num1 = leia.nextInt();
@@ -135,7 +132,7 @@ public class exercicios {
     }
 
     public static void mediaAluno() {
-        Scanner leia = new Scanner(System.in);
+        //Programa para calcular a media de um aluno
         float media = 0;
         String nomeAluno;
         ArrayList<Float> notas = new ArrayList<>();
@@ -153,7 +150,7 @@ public class exercicios {
     }
 
     public static void conversorRealToDolar() {
-        Scanner leia = new Scanner(System.in);
+        //Programa para coverter de real para dolar
         float real, cotacao;
         System.out.println("Informe o valor em reais: ");
         real = leia.nextFloat();
@@ -163,7 +160,7 @@ public class exercicios {
     }
 
     public static void cartaoCredito() {
-        Scanner leia = new Scanner(System.in);
+        //Programa para calcular os juros do cartao de credito
         int tempo;
         double total, prestacao, taxa, juros;
         System.out.println("Informe o valor da prestação: ");
