@@ -18,6 +18,7 @@ public class exercicios {
         System.out.println("Digite 9 para ver o programa de venda de carros:");
         System.out.println("Digite 10 para ver o programa de calcular a media com o status de aprovado ou reprovado:");
         System.out.println("Digite 11 para ver o programa que verifica se o número é par ou impar:");
+        System.out.println("Digite 12 para ver o programa de fruteira:");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -54,6 +55,9 @@ public class exercicios {
                 break;
             case 11:
                 verificaNum();
+                break;
+            case 12:
+                fruteira();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -263,5 +267,17 @@ public class exercicios {
         } else {
             System.out.println("ERROR 404");
         }
+    }
+
+    public static void fruteira() {
+        int qtdMaca;
+        double preco = 0.40, total;
+        System.out.println("Informe quantas maçãs seram compradas: ");
+        qtdMaca = leia.nextInt();
+        if (qtdMaca < 11) {
+            preco = 0.50;
+        }
+        total = preco * qtdMaca;
+        System.out.println("O preço final foi de: " + total + " reais");
     }
 }
