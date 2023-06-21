@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class exercicios {
@@ -135,21 +136,19 @@ public class exercicios {
 
     public static void mediaAluno() {
         Scanner leia = new Scanner(System.in);
-        float notas[] = { 0, 0, 0, 0, 0 }, media = 0;
+        float media = 0;
         String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
 
         System.out.println("Informe o nome do aluno: ");
         nomeAluno = leia.nextLine();
         for (int i = 0; i < 5; i++) {
             System.out.println("Informe a " + (i + 1) + "ª nota:");
-            notas[i] = leia.nextInt();
-            media += notas[i];
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
         }
         media = media / 5;
-        System.out.println(nomeAluno + " para as notas: ");
-        for (int i = 0; i < 5; i++) {
-            System.out.println(notas[i]);
-        }
+        System.out.println(nomeAluno + " para as notas: " + notas);
         System.out.println("Sua media foi de :" + media);
     }
 
@@ -166,7 +165,7 @@ public class exercicios {
     public static void cartaoCredito() {
         Scanner leia = new Scanner(System.in);
         int tempo;
-        double total, prestacao,taxa, juros;
+        double total, prestacao, taxa, juros;
         System.out.println("Informe o valor da prestação: ");
         prestacao = leia.nextFloat();
         System.out.println("Informe quantos dias a prestação está vencida: ");
