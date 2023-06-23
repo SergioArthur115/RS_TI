@@ -20,6 +20,7 @@ public class exercicios {
         System.out.println("Digite 11 para ver o programa que verifica se o número é par ou impar:");
         System.out.println("Digite 12 para ver o programa de fruteira:");
         System.out.println("Digite 13 para ver o programa de carrinho de picolé");
+        System.out.println("Digite 14 para ver o programa de calculadora");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -62,6 +63,9 @@ public class exercicios {
                 break;
             case 13:
                 carrinhoPicole();
+                break;
+            case 14:
+                calculadora();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -288,7 +292,7 @@ public class exercicios {
     public static void carrinhoPicole() {
         int qtdPicole, op = 0;
         double total = 0;
-        boolean condition=true;
+        boolean condition = true;
         System.out.println("Digite 1 para escolher o picolé de uva R$ 1,00: ");
         System.out.println("Digite 2 para escolher o picolé de laranja R$ 1,25: ");
         System.out.println("Digite 3 para escolher o picolé de milho R$ 1,50: ");
@@ -307,11 +311,55 @@ public class exercicios {
                 break;
             default:
                 System.out.println("Entrada invalida!!!");
-                condition=false;
+                condition = false;
                 break;
         }
         if (condition) {
             System.out.println("O total a pagar foi de " + total + " reais");
-        }       
+        }
+    }
+
+    public static void calculadora() {
+        int op;
+        double num1=0, num2=0, conta = 0;
+        boolean condition = true;
+        String operacao = "";
+        System.out.println("Digite 1 para somar 2 números");
+        System.out.println("Digite 2 para subtrair 2 números");
+        System.out.println("Digite 3 para multiplicar 2 números");
+        System.out.println("Digite 4 para dividir 2 números");
+        op = leia.nextInt();
+        if (op <= 4 && op >= 1) {
+            System.out.println("Digite o primeiro número: ");
+            num1 = leia.nextDouble();
+            System.out.println("Digite o segundo número: ");
+            num2 = leia.nextDouble();
+        }
+        switch (op) {
+            case 1:
+                conta = num1 + num2;
+                operacao = "adição";
+                break;
+            case 2:
+                conta = num1 - num2;
+                operacao = "subtração";
+                break;
+            case 3:
+                conta = num1 * num2;
+                operacao = "multiplicação";
+                break;
+            case 4:
+                conta = num1 / num2;
+                operacao = "divisão";
+                break;
+            default:
+                System.out.println("Entrada inválida!!!");
+                condition = false;
+                break;
+        }
+        if (condition) {
+            System.out.println("O resultado da operação de " + operacao + " o valor foi de :" + conta);
+        }
+
     }
 }
