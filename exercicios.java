@@ -19,6 +19,7 @@ public class exercicios {
         System.out.println("Digite 10 para ver o programa de calcular a media com o status de aprovado ou reprovado:");
         System.out.println("Digite 11 para ver o programa que verifica se o número é par ou impar:");
         System.out.println("Digite 12 para ver o programa de fruteira:");
+        System.out.println("Digite 13 para ver o programa de carrinho de picolé");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -58,6 +59,9 @@ public class exercicios {
                 break;
             case 12:
                 fruteira();
+                break;
+            case 13:
+                carrinhoPicole();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -279,5 +283,35 @@ public class exercicios {
         }
         total = preco * qtdMaca;
         System.out.println("O preço final foi de: " + total + " reais");
+    }
+
+    public static void carrinhoPicole() {
+        int qtdPicole, op = 0;
+        double total = 0;
+        boolean condition=true;
+        System.out.println("Digite 1 para escolher o picolé de uva R$ 1,00: ");
+        System.out.println("Digite 2 para escolher o picolé de laranja R$ 1,25: ");
+        System.out.println("Digite 3 para escolher o picolé de milho R$ 1,50: ");
+        op = leia.nextInt();
+        System.out.println("Informe a quantidade a ser comprada: ");
+        qtdPicole = leia.nextInt();
+        switch (op) {
+            case 1:
+                total = qtdPicole;
+                break;
+            case 2:
+                total = qtdPicole * 1.25;
+                break;
+            case 3:
+                total = qtdPicole * 1.50;
+                break;
+            default:
+                System.out.println("Entrada invalida!!!");
+                condition=false;
+                break;
+        }
+        if (condition) {
+            System.out.println("O total a pagar foi de " + total + " reais");
+        }       
     }
 }
