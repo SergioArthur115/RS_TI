@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class exercicios2 {
@@ -11,8 +12,8 @@ public class exercicios2 {
         System.out.println("Digite 3 para ver o programa de variaveis");
         System.out.println("Digite 4 para ver o programa de dados pessoais completos:");
         System.out.println("Digite 5 para ver o programa de somar dois numeros:");
-        System.out.println("Digite 6 para ver o programa de calcular a media:");
-        System.out.println("Digite 7 para ver o programa de converter reais em dolares:");
+        System.out.println("Digite 6 para ver o programa de potencia:");
+        System.out.println("Digite 7 para ver o programa de calcular a media:");
         System.out.println("Digite 8 para ver o programa de cartao de crédito:");
         System.out.println("Digite 9 para ver o programa de cartao de crédito com taxa ajustavel:");
         System.out.println("Digite 10 para ver o programa de venda de carros:");
@@ -38,13 +39,13 @@ public class exercicios2 {
                 dadosPessoaisCompletos();
                 break;
             case 5:
-                // mediaAluno();
+                somaNum();
                 break;
             case 6:
-                // conversorRealToDolar();
+                potencia();
                 break;
             case 7:
-                // cartaoCredito();
+                calculaMedia();
                 break;
             case 8:
                 // cartaoCredito2();
@@ -110,15 +111,16 @@ public class exercicios2 {
         System.out.println("Sua idade é: " + idade);
         System.out.println("Seu signo é : " + signo);
     }
+
     private static void dadosPessoaisCompletos() {
-        String nome,sobreNome,endereco,bairro,cidade,estado,cpf,rg, telefone;
-        int idade,numResidencia;
+        String nome, sobreNome, endereco, bairro, cidade, estado, cpf, rg, telefone;
+        int idade, numResidencia;
 
         System.out.println("|Sistema de cadastro básico|");
         System.out.println("Informe seu nome: ");
         nome = leia.next();
         System.out.println("Informe seu sobrenome: ");
-        sobreNome = leia.next();  
+        sobreNome = leia.next();
         System.out.println("Informe sua idade: ");
         idade = leia.nextInt();
         leia.skip("\\R");
@@ -127,18 +129,18 @@ public class exercicios2 {
         System.out.println("Informe seu rg: ");
         rg = leia.next();
         System.out.println("Informe o seu número de telefone: ");
-        telefone=leia.next();
+        telefone = leia.next();
         System.out.println("Informe seu endereco: ");
         endereco = leia.next();
         System.out.println("Informe seu bairro");
-        bairro=leia.next();
+        bairro = leia.next();
         System.out.println("Informe seu cidade: ");
         cidade = leia.next();
         System.out.println("Informe o seu estado: ");
-        estado=leia.next();
+        estado = leia.next();
         System.out.println("Informe o número da residencia: ");
         numResidencia = leia.nextInt();
-        
+
         System.out.println("-----------------------------");
         System.out.println("Seu nome é: " + nome);
         System.out.println("Seu sobrenome é: " + sobreNome);
@@ -151,5 +153,41 @@ public class exercicios2 {
         System.out.println("Sua cidade é: " + cidade);
         System.out.println("Seu estado é: " + estado);
         System.out.println("Seu número de residência é: " + numResidencia);
+    }
+
+    private static void somaNum() {
+        int n1, n2, resultado;
+        System.out.println("Informe o primeiro número: ");
+        n1 = leia.nextInt();
+        System.out.println("Informe o segundo número: ");
+        n2 = leia.nextInt();
+        resultado = n1 + n2;
+        System.out.println("O resultado da soma foi: " + resultado);
+    }
+
+    private static void potencia() {
+        int num, pot;
+        System.out.println("Informe a base: ");
+        num = leia.nextInt();
+        System.out.println("Informe o expoente: ");
+        pot = leia.nextInt();
+        System.out.println("O valor da potênciação foi: " + Math.pow(num, pot));
+    }
+
+    private static void calculaMedia() {
+        float media = 0;
+        String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: " + notas);
+        System.out.println("Sua media foi de :" + media);
     }
 }
