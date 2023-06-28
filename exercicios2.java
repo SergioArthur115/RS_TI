@@ -18,8 +18,8 @@ public class exercicios2 {
         System.out.println("Digite 8 para ver o programa de converter real para dolar:");
         System.out.println("Digite 9 para ver o programa de venda de carros:");
         System.out.println("Digite 10 para ver o programa de cartao de crédito:");
-        System.out.println("Digite 11 para ver o programa de cartao de cretido com taxa ajustavel");
-        System.out.println("Digite 12 para ver o programa que verifica se o número é par ou impar:");
+        System.out.println("Digite 11 para ver o programa de cartao de cretido com taxa ajustavel: ");
+        System.out.println("Digite 12 para ver o programa de venda de produtos: ");
         System.out.println("Digite 13 para ver o programa de fruteira:");
         System.out.println("Digite 14 para ver o programa de carrinho de picolé");
         System.out.println("Digite 15 para ver o programa de calculadora");
@@ -61,7 +61,7 @@ public class exercicios2 {
                 calculaJurosAjustavel();
                 break;
             case 12:
-                // fruteira();
+                vendaProduto();
                 break;
             case 13:
                 // carrinhoPicole();
@@ -234,8 +234,9 @@ public class exercicios2 {
         System.out.println("O total a pagar foi de: " + total);
         System.out.println("O valor do juros foi de: " + juros);
     }
+
     public static void calculaJurosAjustavel() {
-        double valorPrest, total, juros,taxa;
+        double valorPrest, total, juros, taxa;
         int qtdDias;
         System.out.println("Informe o valor da prestação: ");
         valorPrest = leia.nextDouble();
@@ -243,12 +244,22 @@ public class exercicios2 {
         qtdDias = leia.nextInt();
         System.out.println("Informe a taxa: ");
         taxa = leia.nextInt();
-        juros = valorPrest * ((taxa/100)/30) * qtdDias;
+        juros = valorPrest * ((taxa / 100) / 30) * qtdDias;
         total = juros + valorPrest;
         System.out.println("O total a pagar foi de: " + total);
         System.out.println("O valor do juros foi de: " + juros);
     }
-    private static void name() {
-        
+
+    public static void vendaProduto() {
+        String nomeProduto;
+        double custoProduto, percVenda;
+        System.out.println("Informe o nome do produto: ");
+        nomeProduto = leia.next();
+        System.out.println("Informe o custo do produto: ");
+        custoProduto = leia.nextDouble();
+        System.out.println("Informe o percentual de acréscimo para venda: ");
+        percVenda = leia.nextDouble();
+        System.out.println(
+                "O produto " + nomeProduto + " custará " + (custoProduto + (custoProduto * (percVenda / 100))));
     }
 }
