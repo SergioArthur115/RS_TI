@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +15,10 @@ public class exercicios2 {
         System.out.println("Digite 5 para ver o programa de somar dois numeros:");
         System.out.println("Digite 6 para ver o programa de potencia:");
         System.out.println("Digite 7 para ver o programa de calcular a media:");
-        System.out.println("Digite 8 para ver o programa de cartao de crédito:");
-        System.out.println("Digite 9 para ver o programa de cartao de crédito com taxa ajustavel:");
-        System.out.println("Digite 10 para ver o programa de venda de carros:");
-        System.out.println("Digite 11 para ver o programa de calcular a media com o status de aprovado ou reprovado:");
+        System.out.println("Digite 8 para ver o programa de converter real para dolar:");
+        System.out.println("Digite 9 para ver o programa de venda de carros:");
+        System.out.println("Digite 10 para ver o programa de cartao de crédito:");
+        System.out.println("Digite 11 para ver o programa de cartao de cretido com taxa ajustavel");
         System.out.println("Digite 12 para ver o programa que verifica se o número é par ou impar:");
         System.out.println("Digite 13 para ver o programa de fruteira:");
         System.out.println("Digite 14 para ver o programa de carrinho de picolé");
@@ -48,16 +49,16 @@ public class exercicios2 {
                 calculaMedia();
                 break;
             case 8:
-                // cartaoCredito2();
+                conversorRealToDolar();
                 break;
             case 9:
-                // vendaCarro();
+                vendaCarro();
                 break;
             case 10:
-                // mediaAlunoAvaliado();
+                calculaJuros();
                 break;
             case 11:
-                // verificaNum();
+                calculaJurosAjustavel();
                 break;
             case 12:
                 // fruteira();
@@ -189,5 +190,65 @@ public class exercicios2 {
         media = media / 5;
         System.out.println(nomeAluno + " para as notas: " + notas);
         System.out.println("Sua media foi de :" + media);
+    }
+
+    private static void conversorRealToDolar() {
+        double real, cotacao;
+        DecimalFormat df = new DecimalFormat("0.00");
+        System.out.println("Informe o valor em reais: ");
+        real = leia.nextDouble();
+        System.out.println("Informe a cotação do dolar: ");
+        cotacao = leia.nextDouble();
+        System.out.println("O valor em dolares é: " + df.format(real / cotacao));
+    }
+
+    public static void vendaCarro() {
+        // Programa para realizar a venda de um carro
+        String nomeAuto;
+        double precoFabrica, porcVendedor, imposto, total;
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        System.out.println("Informe o nome do automóvel: ");
+        nomeAuto = leia.next();
+        System.out.println("Informe o preço de fábrica do automóvel: ");
+        precoFabrica = leia.nextDouble();
+        porcVendedor = precoFabrica * 0.45;
+        imposto = precoFabrica * 0.28;
+        total = precoFabrica + porcVendedor + imposto;
+        System.out.println("Para o automóvel: " + nomeAuto);
+        System.out.println("os sub-totais foram: ");
+        System.out.println("\tPorcentagem do revendedor: " + df.format(porcVendedor));
+        System.out.println("\tImposto: " + df.format(imposto));
+        System.out.println("Total a pagar: " + df.format(total));
+    }
+
+    public static void calculaJuros() {
+        double valorPrest, total, juros;
+        int qtdDias;
+        System.out.println("Informe o valor da prestação: ");
+        valorPrest = leia.nextDouble();
+        System.out.println("Informe os dias de atraso: ");
+        qtdDias = leia.nextInt();
+        juros = valorPrest * 0.02 * qtdDias;
+        total = juros + valorPrest;
+        System.out.println("O total a pagar foi de: " + total);
+        System.out.println("O valor do juros foi de: " + juros);
+    }
+    public static void calculaJurosAjustavel() {
+        double valorPrest, total, juros,taxa;
+        int qtdDias;
+        System.out.println("Informe o valor da prestação: ");
+        valorPrest = leia.nextDouble();
+        System.out.println("Informe os dias de atraso: ");
+        qtdDias = leia.nextInt();
+        System.out.println("Informe a taxa: ");
+        taxa = leia.nextInt();
+        juros = valorPrest * ((taxa/100)/30) * qtdDias;
+        total = juros + valorPrest;
+        System.out.println("O total a pagar foi de: " + total);
+        System.out.println("O valor do juros foi de: " + juros);
+    }
+    private static void name() {
+        
     }
 }
