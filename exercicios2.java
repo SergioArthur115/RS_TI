@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class exercicios2 {
@@ -20,9 +21,11 @@ public class exercicios2 {
         System.out.println("Digite 10 para ver o programa de cartao de crédito:");
         System.out.println("Digite 11 para ver o programa de cartao de cretido com taxa ajustavel: ");
         System.out.println("Digite 12 para ver o programa de venda de produtos: ");
-        System.out.println("Digite 13 para ver o programa de fruteira:");
-        System.out.println("Digite 14 para ver o programa de carrinho de picolé");
-        System.out.println("Digite 15 para ver o programa de calculadora");
+        System.out.println("Digite 13 para ver o programa de verificação de idade:");
+        System.out.println("Digite 14 para ver o programa de chutar a cor do time: ");
+        System.out.println("Digite 15 para ver o programa de comprar trakinas: ");
+        System.out.println("Digite 16 para ver o programa de indetifica par ou impar: ");
+        System.out.println("Digite 17 para ver o programa de calcular a media e o status: ");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -64,10 +67,19 @@ public class exercicios2 {
                 vendaProduto();
                 break;
             case 13:
-                // carrinhoPicole();
+                verificaIdade();
                 break;
             case 14:
-                // calculadora();
+                acertaTime();
+                break;
+            case 15:
+                compraTrakinas();
+                break;
+            case 16:
+                parImpar();
+                break;
+            case 17:
+                calculaMediaStatus();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -261,5 +273,83 @@ public class exercicios2 {
         percVenda = leia.nextDouble();
         System.out.println(
                 "O produto " + nomeProduto + " custará " + (custoProduto + (custoProduto * (percVenda / 100))));
+    }
+
+    public static void verificaIdade() {
+        int idade;
+        String nome;
+
+        System.out.println("Informe o seu nome: ");
+        nome = leia.next();
+        System.out.println("Informe a sua idade: ");
+        idade = leia.nextInt();
+        if (idade >= 18) {
+            System.out.println(nome + " voce está habilitado a tirar a carteira de motorista!");
+        } else {
+            System.out.println(nome + " voce não está habilitado a tirar a carteira de motorista!");
+        }
+    }
+
+    public static void acertaTime() {
+        String nome, cor;
+
+        System.out.println("Informe o seu nome: ");
+        nome = leia.next();
+        System.out.println("Informe a cor do time: ");
+        cor = leia.next().toUpperCase();
+
+        if (cor.equals("VERMELHO")) {
+            System.out.println(nome + " voce acertou a cor do Inter!");
+        } else {
+            System.out.println(nome + " voce errou a cor do Inter!");
+        }
+    }
+
+    public static void compraTrakinas() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        int qtdTrakinas;
+        double total;
+        System.out.println("Informe a quantidade de trakinas a ser comprada: ");
+        qtdTrakinas = leia.nextInt();
+        if (qtdTrakinas >= 10) {
+            total = qtdTrakinas * 3.0;
+        } else {
+            total = qtdTrakinas * 3.5;
+        }
+        System.out.println("Para a quantidade de " + qtdTrakinas + " trakinas o valor total foi de :" + df.format(total)
+                + " reais");
+    }
+
+    public static void parImpar() {
+        int num;
+        System.out.println("Informe o numero");
+        num = leia.nextInt();
+        if (num % 2 == 0) {
+            System.out.println("O numero informado é par!");
+        } else {
+            System.out.println("O numero informado é impar!");
+        }
+    }
+
+    private static void calculaMediaStatus() {
+        float media = 0;
+        String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: " + notas);
+        System.out.println("Sua media foi de :" + media);
+        if (media >= 7) {
+            System.out.println("E você foi aprovado!");
+        } else {
+            System.out.println("E você foi reprovado!");
+        }
     }
 }
