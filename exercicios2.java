@@ -26,6 +26,9 @@ public class exercicios2 {
         System.out.println("Digite 15 para ver o programa de comprar trakinas: ");
         System.out.println("Digite 16 para ver o programa de indetifica par ou impar: ");
         System.out.println("Digite 17 para ver o programa de calcular a media e o status: ");
+        System.out.println("Digite 18 para ver o programa de calcular a media e o status completo: ");
+        System.out.println("Digite 19 para ver o programa de calculadora: ");
+        System.out.println("Digite 20 para ver o programa de calculadora com simbolos: ");
         System.out.println("Digite 0 para sair: ");
         op = leia.nextInt();
         switch (op) {
@@ -80,6 +83,15 @@ public class exercicios2 {
                 break;
             case 17:
                 calculaMediaStatus();
+                break;
+            case 18:
+                calculaMediaStatusCompleto();
+                break;
+            case 19:
+                calculadora();
+                break;
+            case 20:
+                calculadoraSimbolo();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -350,6 +362,87 @@ public class exercicios2 {
             System.out.println("E você foi aprovado!");
         } else {
             System.out.println("E você foi reprovado!");
+        }
+    }
+
+    private static void calculaMediaStatusCompleto() {
+        float media = 0;
+        String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: " + notas);
+        System.out.println("Sua media foi de :" + media);
+        if (media >= 7) {
+            System.out.println("E você foi aprovado!");
+        } else if (media >= 5) {
+            System.out.println("E você está em recuperação!");
+        } else {
+            System.out.println("E você foi reprovado!");
+        }
+    }
+
+    private static void calculadora() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        int op = 99;
+        double num1, num2;
+        System.out.println("Digite o primeiro número: ");
+        num1 = leia.nextDouble();
+        System.out.println("Digite o segundo número: ");
+        num2 = leia.nextDouble();
+        System.out.println("Digite 1 para realizar a operação de adição");
+        System.out.println("Digite 2 para realizar a operação de subtração");
+        System.out.println("Digite 3 para realizar a operação de multiplicação");
+        System.out.println("Digite 4 para realizar a operação de divisão");
+        System.out.println("Digite a opção: ");
+        op = leia.nextInt();
+        switch (op) {
+            case 1:
+                System.out.println("O resultado da soma foi: " + (df.format(num1 + num2)));
+                break;
+            case 2:
+                System.out.println("O resultado da subtração foi: " + (df.format(num1 - num2)));
+                break;
+            case 3:
+                System.out.println("O resultado da multiplicação foi: " + (df.format(num1 * num2)));
+                break;
+            case 4:
+                System.out.println("O resultado da divisão foi: " + (df.format(num1 / num2)));
+                break;
+            default:
+                System.out.println("Opção Inválida!!!");
+                break;
+        }
+    }
+
+    public static void calculadoraSimbolo() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        double num1, num2;
+        String operacao;
+        System.out.println("Digite o primeiro número: ");
+        num1 = leia.nextDouble();
+        leia.skip("\\R");
+        System.out.println("Digite a operação matematica (+ - * /) : ");
+        operacao = leia.nextLine();
+        System.out.println("Digite o segundo número: ");
+        num2 = leia.nextDouble();
+        if (operacao.equals("+")) {
+            System.out.println("O resultado da soma foi: " + (df.format(num1 + num2)));
+        } else if (operacao.equals("-")) {
+            System.out.println("O resultado da subtração foi: " + (df.format(num1 - num2)));
+        } else if (operacao.equals("*")) {
+            System.out.println("O resultado da multiplicação foi: " + (df.format(num1 * num2)));
+        } else if (operacao.equals("/")) {
+            System.out.println("O resultado da divisão foi: " + (df.format(num1 / num2)));
+        } else {
+            System.out.println("Opção Inválida!!!");
         }
     }
 }
