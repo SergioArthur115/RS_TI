@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class exercicios2 {
     private static Scanner leia = new Scanner(System.in);
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     public static void main(final String[] args) {
         int op = 99;
@@ -29,7 +30,11 @@ public class exercicios2 {
         System.out.println("Digite 18 para ver o programa de calcular a media e o status completo: ");
         System.out.println("Digite 19 para ver o programa de calculadora: ");
         System.out.println("Digite 20 para ver o programa de calculadora com simbolos: ");
+        System.out.println("Digite 21 para ver o programa de comprar picoles: ");
+        System.out.println("Digite 22 para ver o programa de calcular media 2: ");
+        System.out.println("Digite 23 para ver o programa de escolher carro: ");
         System.out.println("Digite 0 para sair: ");
+        System.out.println("Digite a opção: ");
         op = leia.nextInt();
         switch (op) {
             case 1:
@@ -92,6 +97,15 @@ public class exercicios2 {
                 break;
             case 20:
                 calculadoraSimbolo();
+                break;
+            case 21:
+                compraPicole();
+                break;
+            case 22:
+                calculaMediaStatusCompleto2();
+                break;
+            case 23:
+                escolhaCarro();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -218,7 +232,6 @@ public class exercicios2 {
 
     private static void conversorRealToDolar() {
         double real, cotacao;
-        DecimalFormat df = new DecimalFormat("0.00");
         System.out.println("Informe o valor em reais: ");
         real = leia.nextDouble();
         System.out.println("Informe a cotação do dolar: ");
@@ -230,7 +243,6 @@ public class exercicios2 {
         // Programa para realizar a venda de um carro
         String nomeAuto;
         double precoFabrica, porcVendedor, imposto, total;
-        DecimalFormat df = new DecimalFormat("0.00");
 
         System.out.println("Informe o nome do automóvel: ");
         nomeAuto = leia.next();
@@ -318,7 +330,6 @@ public class exercicios2 {
     }
 
     public static void compraTrakinas() {
-        DecimalFormat df = new DecimalFormat("0.00");
         int qtdTrakinas;
         double total;
         System.out.println("Informe a quantidade de trakinas a ser comprada: ");
@@ -390,7 +401,6 @@ public class exercicios2 {
     }
 
     private static void calculadora() {
-        DecimalFormat df = new DecimalFormat("0.00");
         int op = 99;
         double num1, num2;
         System.out.println("Digite o primeiro número: ");
@@ -423,7 +433,6 @@ public class exercicios2 {
     }
 
     public static void calculadoraSimbolo() {
-        DecimalFormat df = new DecimalFormat("0.00");
         double num1, num2;
         String operacao;
         System.out.println("Digite o primeiro número: ");
@@ -443,6 +452,81 @@ public class exercicios2 {
             System.out.println("O resultado da divisão foi: " + (df.format(num1 / num2)));
         } else {
             System.out.println("Opção Inválida!!!");
+        }
+    }
+
+    public static void compraPicole() {
+        int op, qtdPicole;
+        double total = 0;
+        boolean status = true;
+        System.out.println("Informe a quantidade de picoles a ser comprada: ");
+        qtdPicole = leia.nextInt();
+        System.out.println("Digite 1 para escolher o picole de Uva R$ 1,00");
+        System.out.println("Digite 2 para escolher o picole de Laranja R$ 1,25");
+        System.out.println("Digite 3 para escolher o picole de Milho R$ 1,50");
+        System.out.println("Digite 0 para sair");
+        System.out.println("Digite a opção: ");
+        op = leia.nextInt();
+        switch (op) {
+            case 1:
+                total = qtdPicole;
+                break;
+            case 2:
+                total = qtdPicole * 1.25;
+                break;
+            case 3:
+                total = qtdPicole * 1.50;
+                break;
+            case 0:
+                status = false;
+                System.out.println("Programa Finalizado!!!");
+                break;
+            default:
+                status = false;
+                System.out.println("Entrada Invalida!!!");
+                break;
+        }
+        if (status) {
+            System.out.println("O total foi de : " + df.format(total));
+        }
+    }
+
+    public static void calculaMediaStatusCompleto2() {
+        float media = 0;
+        String nomeAluno;
+        ArrayList<Float> notas = new ArrayList<>();
+
+        System.out.println("Informe o nome do aluno: ");
+        nomeAluno = leia.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Informe a " + (i + 1) + "ª nota:");
+            notas.add(leia.nextFloat());
+            media += notas.get(i);
+        }
+        media = media / 5;
+        System.out.println(nomeAluno + " para as notas: " + notas);
+        System.out.println("Sua media foi de :" + media);
+        if (media >= 7 && media <= 10) {
+            System.out.println("E você foi aprovado!");
+        } else if (media >= 5) {
+            System.out.println("E você está em recuperação!");
+        } else if (media < 5 && media >= 0) {
+            System.out.println("E você foi reprovado!");
+        } else {
+            System.out.println("ERROR 404!!!");
+        }
+    }
+
+    private static void escolhaCarro() {
+        String veiculo;
+        System.out.println("Escolha qual veiculo voce acha mais bonito(Fusca, Opala, Ferrari ou Porsche)");
+        veiculo = leia.next().toLowerCase();
+        if (veiculo.equals("fusca") || veiculo.equals("opala")) {
+            System.out.println("Voce gosta de carros antigos.");
+        } else if (veiculo.equals("ferrari") || veiculo.equals("porsche")) {
+            System.out.println("Voce gosta de carros esportivos.");
+        } else {
+            System.out.println("Carro não cadastrado");
         }
     }
 }
