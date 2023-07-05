@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -33,6 +34,9 @@ public class exercicios2 {
         System.out.println("Digite 21 para ver o programa de comprar picoles: ");
         System.out.println("Digite 22 para ver o programa de calcular media 2: ");
         System.out.println("Digite 23 para ver o programa de escolher carro: ");
+        System.out.println("Digite 24 para ver o programa de venda de imóvel: ");
+        System.out.println("Digite 25 para ver o programa de compra com cartão: ");
+        System.out.println("Digite 26 para ver o programa de escolher o biscoito ");
         System.out.println("Digite 0 para sair: ");
         System.out.println("Digite a opção: ");
         op = leia.nextInt();
@@ -106,6 +110,15 @@ public class exercicios2 {
                 break;
             case 23:
                 escolhaCarro();
+                break;
+            case 24:
+                vendaImovel();
+                break;
+            case 25:
+                compraCartao();
+                break;
+            case 26:
+                escolhaBiscoito();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -456,39 +469,40 @@ public class exercicios2 {
     }
 
     public static void compraPicole() {
-        int op, qtdPicole;
+        int op = 0, qtdPicole;
         double total = 0;
         boolean status = true;
-        System.out.println("Informe a quantidade de picoles a ser comprada: ");
-        qtdPicole = leia.nextInt();
-        System.out.println("Digite 1 para escolher o picole de Uva R$ 1,00");
-        System.out.println("Digite 2 para escolher o picole de Laranja R$ 1,25");
-        System.out.println("Digite 3 para escolher o picole de Milho R$ 1,50");
-        System.out.println("Digite 0 para sair");
-        System.out.println("Digite a opção: ");
-        op = leia.nextInt();
-        switch (op) {
-            case 1:
-                total = qtdPicole;
-                break;
-            case 2:
-                total = qtdPicole * 1.25;
-                break;
-            case 3:
-                total = qtdPicole * 1.50;
-                break;
-            case 0:
-                status = false;
-                System.out.println("Programa Finalizado!!!");
-                break;
-            default:
-                status = false;
-                System.out.println("Entrada Invalida!!!");
-                break;
+        while (status) {
+
+            System.out.println("Digite 1 para escolher o picole de Uva R$ 1,00");
+            System.out.println("Digite 2 para escolher o picole de Laranja R$ 1,25");
+            System.out.println("Digite 3 para escolher o picole de Milho R$ 1,50");
+            System.out.println("Digite 0 para sair");
+            System.out.println("Digite a opção: ");
+            qtdPicole = leia.nextInt();
+            System.out.println("Informe a quantidade de picoles a ser comprada: ");
+            switch (op) {
+                case 1:
+                    total = qtdPicole + total;
+                    break;
+                case 2:
+                    total = qtdPicole * 1.25 + total;
+                    break;
+                case 3:
+                    total = qtdPicole * 1.50 + total;
+                    break;
+                case 0:
+                    status = false;
+                    System.out.println("Programa Finalizado!!!");
+                    break;
+                default:
+                    status = false;
+                    System.out.println("Entrada Invalida!!!");
+                    break;
+            }
+
         }
-        if (status) {
-            System.out.println("O total foi de : " + df.format(total));
-        }
+        System.out.println("O total foi de : " + df.format(total));
     }
 
     public static void calculaMediaStatusCompleto2() {
@@ -527,6 +541,143 @@ public class exercicios2 {
             System.out.println("Voce gosta de carros esportivos.");
         } else {
             System.out.println("Carro não cadastrado");
+        }
+    }
+
+    private static void vendaImovel() {
+        String nome;
+        double valor;
+        boolean status;
+        int op = 99;
+        do {
+            status = false;
+            System.out.println("Informe seu nome:");
+            nome = leia.next();
+            System.out.println("Informe o valor do imóvel:");
+            valor = lerNumFLOAT();
+            if (valor >= 0) {
+                System.out.print(nome + " sua comissão foi de: R$");
+            }
+            if (valor >= 100000.00) {
+                System.out.println(df.format(valor * 0.2));
+            } else if (valor >= 70000.00) {
+                System.out.println(df.format(valor * 0.15));
+            } else if (valor >= 0) {
+                System.out.println(df.format(valor * 0.10));
+            } else {
+                System.out.println("ERROR!!!");
+                System.out.println("Deseja tentar novamente?");
+                System.out.println("Digite 1 para sim e 2 para não");
+                op = leiaNumINT();
+                if (op == 1) {
+                    status = true;
+                } else {
+                    System.out.println("Fim do Programa!!!");
+                }
+            }
+        } while (status);
+    }
+
+    public static int leiaNumINT() {
+        int num = 99;
+        boolean leu = false;
+        Scanner lerNum = new Scanner(System.in);
+        while (!leu) {
+            try {
+                num = lerNum.nextInt();
+                leu = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida, tente novamente!");
+                lerNum.nextLine();
+            }
+        }
+        return num;
+    }
+
+    public static float lerNumFLOAT() {
+        float num = 99;
+        boolean leu = false;
+        Scanner lerNum = new Scanner(System.in);
+        while (!leu) {
+            try {
+                num = lerNum.nextInt();
+                leu = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida, tente novamente!");
+                lerNum.nextLine();
+            }
+        }
+        return num;
+    }
+
+    public static void compraCartao() {
+        String nome, forma = null;
+        double valor = 0, total = 0;
+        int op;
+        do {
+            System.out.println("1 Venda a vista - desconto 10%");
+            System.out.println("2 Venda a prazo 30 dias- desconto 5%");
+            System.out.println("3 Venda a prazo 60 dias- sem desconto");
+            System.out.println("4 Venda a prazo 90 dias - acréscimo 5%");
+            System.out.println("5 Venda com cartão de débito - desconto 8%");
+            System.out.println("6 Venda com cartão de crédito - desconto 7%");
+            System.out.println("o - Sair");
+            op = leiaNumINT();
+            System.out.println("Informe o nome do cliente: ");
+            nome = leia.next();
+            System.out.println("Informe o valor da compra: ");
+            valor = lerNumFLOAT();
+            switch (op) {
+                case 1:
+                    total = valor * 0.9;
+                    forma = "Á Vista 10%";
+                    op = 0;
+                    break;
+                case 2:
+                    total = valor * 0.95;
+                    forma = "Á Prazo 30 dias - desconto 5%";
+                    op = 0;
+                    break;
+                case 3:
+                    total = valor;
+                    forma = "Á Prazo 60 dias - sem desconto";
+                    op = 0;
+                    break;
+                case 4:
+                    total = valor * 1.05;
+                    forma = "Á Prazo 90 dias - acréscimo 5%";
+                    op = 0;
+                    break;
+                case 5:
+                    total = valor * 0.92;
+                    forma = "Débito - desconto 8%";
+                    op = 0;
+                    break;
+                case 6:
+                    total = valor * 0.93;
+                    forma = "Crédito - desconto 7%";
+                    op = 0;
+                    break;
+                default:
+                    System.out.println("Entrada Invalida!!!");
+                    break;
+            }
+        } while (op != 0);
+        System.out.println("Cliente: " + nome);
+        System.out.println("Forma de Pagamento: " + forma);
+        System.out.println("Valor: R$" + df.format(total));
+    }
+
+    public static void escolhaBiscoito() {
+        String nome;
+        System.out.println("Escolha  seu biscoito favorito (Atenados, Cartoon, Oreo ou Bono)");
+        nome = leia.next().toLowerCase();
+        if (nome.equals("atenados") || nome.equals("cartoon")) {
+            System.out.println("Voce escolheu os biscoitos mais baratos.");
+        } else if (nome.equals("oreo") || nome.equals("bono")) {
+            System.out.println("Voce escolheu os biscoitos mais caros.");
+        } else {
+            System.out.println("O biscoito escolhido não está na lista!");
         }
     }
 }
