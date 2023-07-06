@@ -37,6 +37,9 @@ public class exercicios2 {
         System.out.println("Digite 24 para ver o programa de venda de imóvel: ");
         System.out.println("Digite 25 para ver o programa de compra com cartão: ");
         System.out.println("Digite 26 para ver o programa de escolher o biscoito ");
+        System.out.println("Digite 27 para ver o programa de calculadora com switch: ");
+        System.out.println("Digite 28 para ver o programa de calculadora com simbolos e switch: ");
+        System.out.println("Digite 29 para ver o programa de nota com conceito: ");
         System.out.println("Digite 0 para sair: ");
         System.out.println("Digite a opção: ");
         op = leia.nextInt();
@@ -119,6 +122,15 @@ public class exercicios2 {
                 break;
             case 26:
                 escolhaBiscoito();
+                break;
+            case 27:
+                calculadoraComSwitch();
+                break;
+            case 28:
+                calculadoraComSimbolosSwitch();
+                break;
+            case 29:
+                notaConceito();
                 break;
             case 0:
                 System.out.println("Fim do Programa!");
@@ -611,10 +623,15 @@ public class exercicios2 {
     }
 
     public static void compraCartao() {
-        String nome, forma = null;
+        String nome = null, forma = null;
         double valor = 0, total = 0;
-        int op;
-        do {
+        int op = 99;
+        while (op != 0) {
+            op = 0;
+            System.out.println("Informe o nome do cliente: ");
+            nome = leia.next();
+            System.out.println("Informe o valor da compra: ");
+            valor = lerNumFLOAT();
             System.out.println("1 Venda a vista - desconto 10%");
             System.out.println("2 Venda a prazo 30 dias- desconto 5%");
             System.out.println("3 Venda a prazo 60 dias- sem desconto");
@@ -623,46 +640,46 @@ public class exercicios2 {
             System.out.println("6 Venda com cartão de crédito - desconto 7%");
             System.out.println("o - Sair");
             op = leiaNumINT();
-            System.out.println("Informe o nome do cliente: ");
-            nome = leia.next();
-            System.out.println("Informe o valor da compra: ");
-            valor = lerNumFLOAT();
             switch (op) {
                 case 1:
                     total = valor * 0.9;
                     forma = "Á Vista 10%";
-                    op = 0;
                     break;
                 case 2:
                     total = valor * 0.95;
                     forma = "Á Prazo 30 dias - desconto 5%";
-                    op = 0;
                     break;
                 case 3:
                     total = valor;
                     forma = "Á Prazo 60 dias - sem desconto";
-                    op = 0;
                     break;
                 case 4:
                     total = valor * 1.05;
                     forma = "Á Prazo 90 dias - acréscimo 5%";
-                    op = 0;
                     break;
                 case 5:
                     total = valor * 0.92;
                     forma = "Débito - desconto 8%";
-                    op = 0;
                     break;
                 case 6:
                     total = valor * 0.93;
                     forma = "Crédito - desconto 7%";
-                    op = 0;
                     break;
+                case 0:
+                    System.out.println("Fim do Programa!!!");
+                    return;
                 default:
                     System.out.println("Entrada Invalida!!!");
-                    break;
+                    System.out.println("Deseja tentar novamente?");
+                    System.out.println("Digite 1 para sim e 2 para não");
+                    op = leiaNumINT();
+                    if (op == 1) {
+                        op = 99;
+                    } else {
+                        return;
+                    }
             }
-        } while (op != 0);
+        }
         System.out.println("Cliente: " + nome);
         System.out.println("Forma de Pagamento: " + forma);
         System.out.println("Valor: R$" + df.format(total));
@@ -678,6 +695,94 @@ public class exercicios2 {
             System.out.println("Voce escolheu os biscoitos mais caros.");
         } else {
             System.out.println("O biscoito escolhido não está na lista!");
+        }
+    }
+
+    private static void calculadoraComSwitch() {
+        int op;
+        float resultado = 0, n1, n2;
+        System.out.println("Digite o primeiro numero: ");
+        n1 = lerNumFLOAT();
+        System.out.println("Digite o segundo numero: ");
+        n2 = lerNumFLOAT();
+        System.out.println("Digite 1 para somar");
+        System.out.println("Digite 2 para subtrair");
+        System.out.println("Digite 3 para multiplicar");
+        System.out.println("Digite 4 para dividir");
+        System.out.println("Digite a opção: ");
+        op = leiaNumINT();
+        switch (op) {
+            case 1:
+                resultado = n1 + n2;
+                break;
+            case 2:
+                resultado = n1 - n2;
+                break;
+            case 3:
+                resultado = n1 * n2;
+                break;
+            case 4:
+                resultado = n1 / n2;
+                break;
+            default:
+                System.out.println("Entrada Invalida!!!");
+                break;
+        }
+        System.out.println("Resultado: " + df.format(resultado));
+    }
+
+    private static void calculadoraComSimbolosSwitch() {
+        String op;
+        float resultado = 0, n1, n2;
+        System.out.println("Digite o primeiro numero: ");
+        n1 = lerNumFLOAT();
+        System.out.println("Digite o segundo numero: ");
+        n2 = lerNumFLOAT();
+        System.out.println("Digite a operação(+ - * / )");
+        op = leia.next();
+        switch (op) {
+            case "+":
+                resultado = n1 + n2;
+                break;
+            case "-":
+                resultado = n1 - n2;
+                break;
+            case "*":
+                resultado = n1 * n2;
+                break;
+            case "/":
+                resultado = n1 / n2;
+                break;
+            default:
+                System.out.println("Entrada Invalida!!!");
+                break;
+        }
+        System.out.println("Resultado foi " + df.format(resultado));
+    }
+
+    private static void notaConceito() {
+        String nome, conceito;
+        System.out.println("Digite o nome do aluno: ");
+        nome = leia.next();
+        System.out.println("Digite o conceito final: ");
+        conceito = leia.next().toUpperCase();
+        System.out.println("nome do aluno: " + nome);
+        switch (conceito) {
+            case "A":
+                System.out.println("Seu conceito final foi A, e foi aprovado com o maior conceito");
+                break;
+            case "B":
+                System.out.println("Seu conceito final foi B, e foi aprovado com um otimo conceito");
+                break;
+            case "C":
+                System.out.println("Seu conceito final foi C, e está em recuperação");
+                break;
+            case "D":
+                System.out.println("Seu conceito final foi D, e foi reprovado");
+                break;
+            default:
+                System.out.println("Falha no Sistema!!!");
+                break;
         }
     }
 }
