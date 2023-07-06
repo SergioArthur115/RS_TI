@@ -764,7 +764,7 @@ public class exercicios2 {
         String nome, conceito;
         System.out.println("Digite o nome do aluno: ");
         nome = leia.next();
-        System.out.println("Digite o conceito final: ");
+        System.out.println("Digite o conceito final (A , B , C ou D): ");
         conceito = leia.next().toUpperCase();
         System.out.println("nome do aluno: " + nome);
         switch (conceito) {
